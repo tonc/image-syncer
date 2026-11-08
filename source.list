@@ -5,7 +5,8 @@ postgres:latest
 nginx:latest
 snowdreamtech/frps:latest
 nickfedor/watchtower:latest
-jxxghp/moviepilot-v3:latest
+jxxghp/moviepilot:latest
+jxxghp/moviepilot:3.2.4
 mysql:latest
 xhongc/music_tag_web:latest
 hanxi/cups-web:latest
