@@ -1,0 +1,7 @@
+docker.io:
+  username: ${DOCKER_USER}
+  password: ${DOCKER_PASS}
+docker.cnb.cool:
+  username: ${CNB_USER}
+  password: ${CNB_PASS}
+  insecure: true

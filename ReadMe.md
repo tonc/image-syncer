@@ -1,0 +1,1 @@
+./image-syncer --auth ./auth.yaml --images ./images.yaml --os linux --arch amd64 --proc 8 --retries 3

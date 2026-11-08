@@ -1,0 +1,48 @@
+name: Sync Images To CNB
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *" # UTC时间，注意时区！ 14:00 UTC +8
+  push:
+    branches:
+      - main
+    paths:
+      - 'source.list' # 修改source.list时触发
+
+jobs:
+  sync-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+        # 新增：根据source.list自动生成images.yaml
+      - name: Generate images.yaml with prefix
+        shell: bash
+        run: |
+          chmod +x gen_images.sh
+          ./gen_images.sh
+
+      # 下载指定版本 image-syncer（这里写最新版v1.5.5，可以自己换）
+      - name: Download image-syncer
+        run: |
+          wget -q https://github.com/AliyunContainerService/image-syncer/releases/download/v1.5.5/image-syncer-v1.5.5-linux-amd64.tar.gz
+          tar -zxvf image-syncer-v1.5.5-linux-amd64.tar.gz
+          chmod +x image-syncer
+
+      # 执行同步，--arch 控制架构
+      - name: Run image sync
+        run: |
+          ./image-syncer \
+            --auth ./auth.yaml \
+            --images ./images.yaml \
+            --os linux \
+            --arch amd64 \
+            --proc 8 \
+            --retries 3
+        env:
+          # 如果你auth.yaml里面用环境变量引用密码，这里注入
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+          CNB_USER: ${{ secrets.CNB_USER }}
+          CNB_PASS: ${{ secrets.CNB_PASS }}
