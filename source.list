@@ -6,7 +6,6 @@ nginx:latest
 snowdreamtech/frps:latest
 nickfedor/watchtower:latest
 jxxghp/moviepilot:latest
-jxxghp/moviepilot:3.2.4
 mysql:latest
 xhongc/music_tag_web:latest
 hanxi/cups-web:latest
@@ -21,4 +20,5 @@ jeessy/ddns-go:latest
 youshandefeiyang/allinone:latest
 ihmily/douyin-live-recorder:latest
 hisatri/lrcapi:latest
-develop767/migu_video
+develop767/migu_video:latest
+chenpingonline/clash-manager:latest
