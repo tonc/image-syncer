@@ -2,7 +2,7 @@ name: Sync Images To CNB
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 6 * * *" # UTC时间，注意时区！ 14:00 UTC +8
+    - cron: "0 */4 * * *"
   push:
     branches:
       - main
