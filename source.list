@@ -7,6 +7,7 @@ snowdreamtech/frps:latest
 nickfedor/watchtower:latest
 jxxghp/moviepilot:latest
 mysql:latest
+mysql:8.0
 xhongc/music_tag_web:latest
 hanxi/cups-web:latest
 linuxserver/qbittorrent:latest
@@ -27,3 +28,4 @@ gdy666/lucky:v3
 node:20-slim
 golang:1.25-bookworm
 debian:bookworm-slim
+python:3.12-slim
